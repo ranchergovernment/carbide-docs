@@ -13,9 +13,9 @@ These steps assume you have already created nodes in your air-gap environment, a
 ```
 
 ```bash
-hauler store add file https://get.rke2.io
+hauler store add file https://get.rke2.io --name install.sh
 
-hauler store add file https://github.com/rancher/rke2/releases/download/v1.35.3%2Brke2r3/sha256sum-amd64.txt
+hauler store add file https://github.com/rancher/rke2/releases/download/v1.35.3%2Brke2r3/sha256sum-amd64.txt --name sha256sum.txt
 ```
 
 Sync commands and image lists can be found on the [Carbide portal](https://portal.ranchercarbide.dev/product/rke2). The portal also has pre-complied Hauler tarballs that can be downloaded directly to skip the sync step.
@@ -51,27 +51,33 @@ hauler store copy registry://airgap.private.registry
 
 1. After loading the Hauler store, extract the RKE2 install script from the Hauler store and copy to a `rke2-artifacts` directory. 
 
+Show artifact references: 
+
 ```bash
 hauler store info
 ```
 
+Extract files to your desired output directory:
+
 ```bash
-hauler store extract xxxx
+hauler store extract install.sh --output /root/rke2-artifacts
+
+hauler store extract sha256sum.txt --output /root/rke2-artifacts
 ```
 
-1. Run the install script, setting `INSTALL_RKE2_ARTIFACT_PATH` to the directory which contains your RKE2 install artifacts from the Hauler store. 
+2. Run the install script, setting `INSTALL_RKE2_ARTIFACT_PATH` to the directory which contains your RKE2 install artifacts from the Hauler store. 
 
 ```bash
 INSTALL_RKE2_ARTIFACT_PATH=/root/rke2-artifacts sh install.sh
 ```
 
-2. Enable and start the rke2 server service.
+3. Enable and start the rke2 server service.
 
 ```bash 
 systemctl enable rke2-server.service && systemctl start rke2-server.service
 ```
 
-3. Watch the logs:
+4. Watch the logs:
 
 ```bash
 journalctl -u rke2-server -f
