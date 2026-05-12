@@ -114,3 +114,22 @@ helm install rancher carbide-charts/rancher \
 ###  Authenticated Registry (Manual registries.yaml)
 
 See the [RKE2/K3s configuration](../configuration/kubernetes.md) section for more details.
+
+## Disabling Remote Fetch of RKE2 and k3s Versions
+
+When installing Rancher in a connected environment using Carbide images, we recommend disabling the remote fetch of KDM (Kontainer Driver Metadata). KDM populates the available RKE2 and k3s version options when provisioning a cluster. If remote fetch is enabled, Rancher may offer versions whose images are not included in your private registry, causing provisioning to fail.
+
+From the Rancher UI, go to Global Settings > `rke-metadata-config` > Show rke-metadata-config. 
+
+Click the three dots on the righthand side and select `Edit Setting`. Set to the following:
+
+```
+{
+  "refresh-interval-minutes": "0",
+  "url": ""
+}
+```
+
+The empty url string tells Rancher to use local KDM data instead of fetching remote. 
+
+> **NOTE:** If Rancher has already fetched a new version of KDM, there will be extra versions of RKE2 and k3s in the local data file. Please verify which images are available in your private registry before provisioning a cluster to avoid failures. 
