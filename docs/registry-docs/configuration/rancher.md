@@ -132,4 +132,4 @@ Click the three dots on the righthand side and select `Edit Setting`. Set to the
 
 The empty url string tells Rancher to use local KDM data instead of fetching remote. 
 
-> Note: If Rancher has already fetched a new version of KDM, there will be extra versions of RKE2 and k3s in the local data file. Please verify which images are available in your private registry before provisioning a cluster to avoid failures. 
+> **NOTE:** If Rancher has already fetched a new version of KDM, there will be extra versions of RKE2 and k3s in the local data file. Please verify which images are available in your private registry before provisioning a cluster to avoid failures. 
