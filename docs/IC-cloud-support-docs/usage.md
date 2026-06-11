@@ -4,7 +4,7 @@ The following instructions apply to the Amazon EC2 C2S region, which is currentl
 
 ## Creating a Carbide Cloud Credential
 
-1. In the Rancher Mananger menu, access Cloud Credentials (`Cluster Management` -> `Cloud Credentials`).
+1. In the Rancher Manager menu, access Cloud Credentials (`Cluster Management` -> `Cloud Credentials`).
 
 2. Select `Create` and choose `Amazon`.
 
@@ -22,13 +22,13 @@ The following instructions apply to the Amazon EC2 C2S region, which is currentl
 
     - It is **required** for you to enter an `AMI ID` and the respective `SSH User` for that AMI ID under the `Advanced` settings.
 
-    - Not all Instance Types are available. Ensure you are leverage an Instance Type that is **available in your environment**. This list will be dynamic in the future.
+    - Not all Instance Types are available. Ensure you are using an Instance Type that is **available in your environment**. This list will be dynamic in the future.
 
     - **Encrypted EBS volumes** are required. Ensure you select the `Encrypt EBS Volumes` and choose a respective KMS key when provisioning.
 
     - If no security group is provided, Rancher will attempt to create a Security Group. If the ability to create Security Groups is limited, have a Security Group created by your Account Manager/Broker that has the [appropriate port configuration](https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/installation-requirements/port-requirements#rancher-aws-ec2-security-group) and select that existing Security Group in the `Advanced` settings.
 
-    ![Create RKE2 Cluster in C2S](/img/classified-provisioning/create-carbide-cloud-creds.png)
+    ![Create RKE2 Cluster in C2S](/img/classified-provisioning/classified-rke2-cluster-provisioning.png)
 
     For more information on provisioning an RKE2/K3s cluster on Amazon EC2s, see the [Rancher docs](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/create-an-amazon-ec2-cluster).
 

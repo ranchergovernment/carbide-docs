@@ -3,11 +3,15 @@ import TabItem from '@theme/TabItem';
 
 # Copying Images to a Registry
 
-The Carbide Secured Registry (CSR) is not intended to be used as the primary registry for running Kubernetes clusters. Instead, follow these steps to copy the images from the CSR to your own registry for later use.
+The Carbide Secured Registry (CSR) is not intended to be the primary registry for running Kubernetes clusters. Instead, follow these steps to copy images from the CSR to your own registry for later use.
 
-These instructions are for connected environments. If you're copying images into an airgapped registry, check the documentation [here](downloading-images.md).
+These instructions are for connected environments, where your registry can reach the CSR directly.
 
-This example uses [Hauler](https://docs.hauler.dev/docs/intro), but any tool with the ability to push/pull an OCI image will be adequate.
+:::tip Working in an airgapped environment?
+If your registry cannot reach the CSR, see [Downloading the Images](downloading-images.md) to package the images for transfer across an airgap.
+:::
+
+These examples use [Hauler](https://docs.hauler.dev/docs/intro), but any tool that can push and pull OCI images will work.
 
 ## Copying Secured Images
 

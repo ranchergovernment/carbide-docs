@@ -95,5 +95,5 @@ In a connected environment, utilize the `Hauler` CLI to verify and collect the R
     --version=v2.13.2
     ```
 
-For more information about airgapped installation of Rancher, see the docs [here](https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/other-installation-methods/airgapped-helm-cli-install).
+For more information about airgapped installation of Rancher, see the docs [here](https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install).
 

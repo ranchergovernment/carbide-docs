@@ -16,6 +16,6 @@ The document icon next to the application name takes you to the upstream project
 
 ![Documentation](/img/appco/documentation-icon.png)
 
-Additionally, some apps have related components that can installed. Click on the component to see it's information and artifacts. 
+Additionally, some apps have related components that can be installed. Click on a component to see its information and artifacts.
 
 ![Related Components](/img/appco/related-components.png)

@@ -43,7 +43,7 @@ If you would like to add the Carbide Helm Charts to the Rancher Chart Catalog (s
 
 #### In Connected Environment
 
-Generate the Hauler manfiest for the Carbide Helm Charts:
+Generate the Hauler manifest for the Carbide Helm Charts:
 
 ```bash
 cat <<EOF > carbide-charts.yaml

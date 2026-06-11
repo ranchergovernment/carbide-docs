@@ -35,7 +35,7 @@ helm install --wait -n kubewarden kubewarden-controller kubewarden/kubewarden-co
 4. Install the defaults helm chart.
 
 ```bash
-helm install --wait -n kubewarden kubewarden-defaults kubewarden/kubewarden-defaults --set "common.cattle.systemDefaultRegistry=<registry-url>" kubewarden/kubewarden-defaults
+helm install --wait -n kubewarden kubewarden-defaults kubewarden/kubewarden-defaults --set "common.cattle.systemDefaultRegistry=<registry-url>"
 ```
 
 For more information about installing Kubewarden, see the [docs](https://docs.kubewarden.io/quick-start#installation).

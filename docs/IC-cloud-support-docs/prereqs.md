@@ -10,7 +10,9 @@ The following tools are required to install/upgrade Rancher Government.
 - [Helm](https://helm.sh/docs/intro/install)
 - [Rancher Government](https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade) (v2.10.3, v2.9.7, v2.8.13 or greater)
 
-> **NOTE:** This feature is only availabe in the Rancher Government product. Carbide customers can download the required artifacts from the [Carbide Portal](https://portal.ranchercarbide.dev/) or the [Carbide Secured Regsitry](/docs/registry-docs/downloading-images.md).
+:::note
+This feature is only available in the Rancher Government product. Carbide customers can download the required artifacts from the [Carbide Portal](https://portal.ranchercarbide.dev/) or the [Carbide Secured Registry](/docs/registry-docs/downloading-images.md).
+:::
 
 ![Rancher Government Portal](/img/classified-provisioning/RancherGovPortal.png)
 
@@ -58,24 +60,24 @@ The Amazon EC2 provisioner requires a certain amount of access to read, write, a
             "Resource": [
               "arn:aws:ec2:AWS_REGION_PLACEHOLDER:AWS_ACCOUNT_ID_PLACEHOLDER:volume/*",
               "arn:aws:ec2:AWS_REGION_PLACEHOLDER:AWS_ACCOUNT_ID_PLACEHOLDER:instance/*",
-              "arn:aws:ec2:AWS_REGION_PLACEHOLDER':AWS_ACCOUNT_ID_PLACEHOLDER:snapshot/*",
-              "arn:aws:kms:AWS_REGION_PLACEHOLDER':AWS_ACCOUNT_ID_PLACEHOLDER:key/*"
+              "arn:aws:ec2:AWS_REGION_PLACEHOLDER:AWS_ACCOUNT_ID_PLACEHOLDER:snapshot/*",
+              "arn:aws:kms:AWS_REGION_PLACEHOLDER:AWS_ACCOUNT_ID_PLACEHOLDER:key/*"
             ]
         },
         {
             "Sid": "RancherAWSPassRolePermissions",
             "Effect": "Allow",
             "Action": [
-				"iam:PassRole",
-				"ec2:RunInstances",
-				"ec2:DetachVolume",
-				"ec2:AttachVolume",
-				"ec2:DeleteSnapshot",
-				"ec2:DeleteTags",
-				"ec2:CreateTags",
-				"ec2:CreateVolume",
-				"ec2:DeleteVolume",
-				"ec2:CreateSnapshot"
+                "iam:PassRole",
+                "ec2:RunInstances",
+                "ec2:DetachVolume",
+                "ec2:AttachVolume",
+                "ec2:DeleteSnapshot",
+                "ec2:DeleteTags",
+                "ec2:CreateTags",
+                "ec2:CreateVolume",
+                "ec2:DeleteVolume",
+                "ec2:CreateSnapshot"
             ],
             "Resource": [
                 "arn:aws:ec2:AWS_REGION_PLACEHOLDER::image/ami-*",
@@ -112,7 +114,7 @@ Rancher Manager needs to be configured with the following values to support full
 
 ### Helm Values
 
-Configure the follow Helm values for your Rancher helm deployment, adjusting the `rancher-url` and `registry-url` for your specific environment.
+Configure the following Helm values for your Rancher Helm deployment, adjusting `rancher-url` and `registry-url` for your specific environment.
 
 ```yaml
 additionalTrustedCAs: true
@@ -141,7 +143,10 @@ data:
   ca-additional.pem: <encodedPrivateBundle>
 type: Opaque
 ```
-**NOTE**: Ensure this secret matches the name and namespace above.
+
+:::note
+Ensure this secret matches the name and namespace shown above.
+:::
 
 ### Registry Configuration
 

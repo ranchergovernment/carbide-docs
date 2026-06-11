@@ -3,9 +3,11 @@ import TabItem from '@theme/TabItem';
 
 # Prerequisites
 
-Below are all the things you need to get started with the Carbide Secured Registry (CSR). As we improve and streamline the process, this list could evolve.
+Below is everything you need to get started with the Carbide Secured Registry (CSR). As we improve and streamline the process, this list may evolve.
 
->**Registry Disclaimer:** The Carbide Secured Registry is _not_ intended to be used as the primary registry for running Kubernetes clusters. It is only intended as the acquisition point to obtain the Carbide images. Customers should seed their own private registries, and use that registry for their Kubernetes clusters.
+:::warning The CSR is an acquisition point, not a runtime registry
+The Carbide Secured Registry is **not** intended to be used as the primary registry for running Kubernetes clusters. It is only the acquisition point for obtaining Carbide images. Seed your own private registry from the CSR, and point your Kubernetes clusters at that registry.
+:::
 
 ## Required Tooling
 
