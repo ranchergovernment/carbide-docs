@@ -112,8 +112,16 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'STIGATRON (Deprecated)',
-      collapsed: true,
+      label: 'RKE2',
+      collapsed: false,
+      items: [
+        'rke2/install',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'STIGATRON',
+      collapsed: false,
       items: [
         'stigatron-docs/introduction',
         {
