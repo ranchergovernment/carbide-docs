@@ -2,7 +2,7 @@
 
 The following are relevant terms that will help you get started with the RGS Application Collection.
 
-### Application
+## Application
 
 An application is a product that users can install into their environments. This is the main component of the collection.
 
@@ -10,7 +10,7 @@ An application can be a database, an API gateway, a load balancer, a runtime, et
 
 Depending on the application type, it will be installed either as a `Helm Chart` (for apps comprised of multiple containers) or as a `Single Container`. Some `Single Container` apps may have multiple flavors of the image to choose from, such as `-dev` images.
 
-### Artifact
+## Artifact
 
 An artifact is the result of packaging the binaries of a component into a distributable unit.
 
@@ -21,10 +21,10 @@ There are 2 main artifact packaging formats:
 
 Artifacts are continuously built, and updated through revisions.
 
-### Branch
+## Branch
 
 A branch is a set of versions where backwards compatibility is expected. Each component follows its own branching strategy, as defined in the upstream project. It is assumed that the upstream project follows semantic versioning.
 
-### Component
+## Component
 
 A component is an identifiable part of an application that provides a clear interface with other parts. It is common in modern software applications to have several components, such as a relational database or a secret manager. In Application Collection, these applications are described using Helm. Depending on the complexity of the application, there may be required and/or optional components.

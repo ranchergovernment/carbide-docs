@@ -1,6 +1,8 @@
 # Prerequisites
 
->:warning: **DEPRECATION NOTICE**: Please note, STIGATRON is now deprecated in favor of the more tightly integrated [Rancher Compliance Operator](/docs/compliance-operator-docs/rke2-stig-scans/). The operator replicates the STIG checks performed by STIGATRON. Please see documentation for more details. 
+:::danger Deprecated
+STIGATRON is deprecated in favor of the more tightly integrated [Rancher Compliance Operator](/docs/compliance-operator-docs/rke2-stig-scans). The operator replicates the STIG checks that STIGATRON performs. See linked documentation for details.
+:::
 
 In order to utilize STIGATRON, you will need the following prerequisites:
 
@@ -16,4 +18,4 @@ This means you have:
 - the carbide helm charts available for use
 - configured k3s/rke2 to use your registry
 - configured Rancher Manager to use your registry
-- setup policy enforcement to only allow images from the CSR
+- set up policy enforcement to only allow images from the CSR

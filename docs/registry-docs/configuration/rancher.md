@@ -2,7 +2,9 @@
 
 This page will walk you through how to configure Rancher to use images from the CSR instead of the upstream Docker Hub images. This will apply to both its own components and downstream Rancher Kubernetes clusters (RKE2/K3s).
 
-> **NOTE**: Due to current limitations of cloud providers, this project will not work for managing hosted clusters (AKS, EKS, GKE). If you're currently using Rancher to manage those workloads, do not use this project. We intend to improve this experience in the future.
+:::warning Not supported for hosted clusters
+Due to current limitations of cloud providers, this configuration does not work for managing hosted clusters (AKS, EKS, GKE). If you're currently using Rancher to manage those workloads, do not apply this configuration. We intend to improve this experience in the future.
+:::
 
 ## Compatibility Matrix
 
@@ -26,9 +28,9 @@ If using the [airgapped installation](https://ranchermanager.docs.rancher.com/ge
 
 Follow Rancher's [connected installation](https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster#4-install-cert-manager) instructions, but using the following steps instead of the `helm install` command from the docs.
 
-After adding the Cert Manager repo and installing the CRDs, use the following to create a temporary `values.yaml` for your chart, subsituting your registry domain:
+After adding the Cert Manager repo and installing the CRDs, create a temporary `values.yaml` for your chart, substituting your registry domain:
 
-```
+```bash
 cat <<EOT > /tmp/values.yaml
 image:
   registry: <registry-url>
@@ -56,9 +58,9 @@ acmesolver:
 EOT
 ```
 
-Then use the following `helm install` command to use the images:
+Then use the following `helm install` command to pull the images from your registry:
 
-```
+```bash
 helm install cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace \
@@ -105,12 +107,35 @@ helm install rancher carbide-charts/rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org \
   --set replicas=3 \
-  --set rancherImage=<registry-url>/rancher/rancher
+  --set rancherImage=<registry-url>/rancher/rancher \
   --set systemDefaultRegistry=<registry-url>
 ```
 
-> **NOTE:** This requires configuring RKE2/K3s `registries.yaml` to work. See the [RKE2/K3s configuration](../configuration/kubernetes.md) section for more details.
+:::note
+This requires configuring the RKE2/K3s `registries.yaml` to work. See the [RKE2/K3s configuration](../configuration/kubernetes.md) section for more details.
+:::
 
-###  Authenticated Registry (Manual registries.yaml)
+### Authenticated Registry (Manual registries.yaml)
 
 See the [RKE2/K3s configuration](../configuration/kubernetes.md) section for more details.
+
+## Disabling Remote Fetch of RKE2 and k3s Versions
+
+When installing Rancher in a connected environment using Carbide images, we recommend disabling the remote fetch of KDM (Kontainer Driver Metadata). KDM populates the available RKE2 and k3s version options when provisioning a cluster. If remote fetch is enabled, Rancher may offer versions whose images are not included in your private registry, causing provisioning to fail.
+
+From the Rancher UI, go to Global Settings > `rke-metadata-config` > Show rke-metadata-config. 
+
+Click the three dots on the righthand side and select `Edit Setting`. Set to the following:
+
+```
+{
+  "refresh-interval-minutes": "0",
+  "url": ""
+}
+```
+
+The empty `url` string tells Rancher to use local KDM data instead of fetching it remotely.
+
+:::warning
+If Rancher has already fetched a newer version of KDM, the local data file may contain extra versions of RKE2 and k3s. Verify which images are available in your private registry before provisioning a cluster to avoid failures.
+:::

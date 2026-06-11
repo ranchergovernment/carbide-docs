@@ -1,8 +1,8 @@
 {
-  "label": "Carbide Image Registry",
+  "label": "Carbide Secured Registry (CSR)",
   "position": 2,
   "link": {
     "type": "generated-index",
-    "description": "Carbide Image Registry"
+    "description": "Acquire, verify, and seed Carbide's hardened, signed container images."
   }
 }
