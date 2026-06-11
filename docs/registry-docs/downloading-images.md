@@ -3,11 +3,13 @@ import TabItem from '@theme/TabItem';
 
 # Downloading the Images
 
-The Carbide Secured Registry (CSR) is not intended to be used as the primary registry for running Kubernetes clusters. Instead, follow these steps to download and package the images to move over an airgap to your own registry.
+The Carbide Secured Registry (CSR) is not intended to be the primary registry for running Kubernetes clusters. Instead, follow these steps to download and package the images so you can move them across an airgap into your own registry.
 
-If you're copying images into a connected registry, check the documentation [here](copying-images.md).
+:::tip Working in a connected environment?
+If your registry can reach the CSR directly, see [Copying Images to a Registry](copying-images.md) instead.
+:::
 
-This example uses [Hauler](https://docs.hauler.dev/docs/intro), but any tool with the ability to push/pull an OCI image will be adequate.
+These examples use [Hauler](https://docs.hauler.dev/docs/intro), but any tool that can push and pull OCI images will work.
 
 ## Downloading Secured Images
 
@@ -67,7 +69,9 @@ If using the `hauler store sync` command from the Carbide portal, you may now se
 
       If you intend to import your tarball directly to containerd, use the `--containerd` flag when you run the save command. This will ensure compatibility no matter the store's contents. 
 
-      >Note: Available in Hauler v1.4.1+.
+      :::note
+      The `--containerd` flag is available in Hauler v1.4.1+.
+      :::
 
       ```bash
       hauler store save --containerd --store carbide-store --filename carbide-images.tar.zst
@@ -151,7 +155,7 @@ If using the `hauler store sync` command from the Carbide portal, you may now se
       Save tarball:
 
       ```bash
-      hauler store copy --store harvester-store --filename harvester-images.tar.zst
+      hauler store save --store harvester-store --filename harvester-images.tar.zst
       ```
 
       ### Longhorn
@@ -207,7 +211,7 @@ If using the `hauler store sync` command from the Carbide portal, you may now se
       Save tarball:
 
       ```bash
-      hauler store save --store application-store ---filename application.tar.zst
+      hauler store save --store application-store --filename application.tar.zst
       ```
   </TabItem>
   <TabItem value="ACR" label="Azure Container Registry (Legacy)">
@@ -258,7 +262,9 @@ If using the `hauler store sync` command from the Carbide portal, you may now se
 
       If you intend to import your tarball directly to containerd, use the `--containerd` flag when you run the save command. This will ensure compatibility no matter the store's contents. 
 
-      >Note: Available in Hauler v1.4.1+.
+      :::note
+      The `--containerd` flag is available in Hauler v1.4.1+.
+      :::
 
       ```bash
       hauler store save --containerd --store carbide-store --filename carbide-images.tar.zst
@@ -342,7 +348,7 @@ If using the `hauler store sync` command from the Carbide portal, you may now se
       Save tarball:
 
       ```bash
-      hauler store copy --store harvester-store --filename harvester-images.tar.zst
+      hauler store save --store harvester-store --filename harvester-images.tar.zst
       ```
 
       ### Longhorn
@@ -398,7 +404,7 @@ If using the `hauler store sync` command from the Carbide portal, you may now se
       Save tarball:
 
       ```bash
-      hauler store save --store application-store ---filename application.tar.zst
+      hauler store save --store application-store --filename application.tar.zst
       ```
   </TabItem>
 </Tabs>

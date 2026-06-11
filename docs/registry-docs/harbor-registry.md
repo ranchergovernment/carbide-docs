@@ -13,9 +13,9 @@ Transitioning to the Harbor registry provides several performance and feature im
 
 ## Setting Up a Harbor Replication of Carbide to Private Registry
 
-1. In your Harbor dashboard, select Registries > New Endpoint. 
+1. In your Harbor dashboard, select `Registries` > `New Endpoint`. 
 
-2. Select `Docker Registry` as your provider, and `https://regsitry.ranchercarbide.dev` as the endpoint URL. Enter your username and password in the Access ID and Access Secret fields.
+2. Select `Docker Registry` as your provider, and `https://registry.ranchercarbide.dev` as the endpoint URL. Enter your username and password in the Access ID and Access Secret fields.
 
 ![Registry Endpoint](/img/RegistryEndpoint.png)
 
@@ -23,6 +23,8 @@ Transitioning to the Harbor registry provides several performance and feature im
 
 4. Name your replication rule and select `Pull-based`. Set `Source registry` to the registry endpoint you just configured. Set the rest of the rule to your desired configuration. See the [Harbor documentation](https://goharbor.io/docs/2.2.0/administration/configuring-replication/create-replication-rules/) for additional information on replication rules.
 
-> **Warning:** We recommend setting replication rules to narrow down the scope of your sync. The Carbide registry contains many TBs of data, and complete replication would consume considerable resources. 
+:::warning
+We recommend scoping your replication rules narrowly. The Carbide registry contains many terabytes of data, and a complete replication would consume considerable bandwidth and storage.
+:::
 
 ![Replication Rule](/img/ReplicationRule.png)

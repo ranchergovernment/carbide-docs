@@ -3,9 +3,9 @@ import TabItem from '@theme/TabItem';
 
 # Validating Images
 
-Images in the Caride Secured Registry (CSR) allow for signature validation and downloading artifacts with metadata about the image such as Software Bill of Materials (SBOMs), Vulnerability Scans, and Cryptographic Signatures.
+Images in the Carbide Secured Registry (CSR) support signature validation and ship with metadata artifacts — Software Bills of Materials (SBOMs), vulnerability scans, and cryptographic signatures.
 
-This will guide you through validating the signatures and attestations of each image in the CSR.
+This page walks through validating the signatures and attestations for each image in the CSR.
 
 <Tabs groupId="registry">
    <TabItem value="harbor" label="Harbor Registry (Standard)" default>
@@ -15,7 +15,9 @@ This will guide you through validating the signatures and attestations of each i
 
       If using `Hauler` to seed your registry, Hauler will automatically verify the signatures when the public key is set in the manifest or as a flag with `--key`.
 
-      > **NOTE:** You'll need to substitute `registry.ranchercarbide.dev` with your own registry domain, if verifying images in your own registry.
+      :::note
+      If you're verifying images in your own registry, substitute `registry.ranchercarbide.dev` with your own registry domain.
+      :::
 
       In Carbide Images v2 (or Cosign v2), the attachment of supply chain artifacts to the top layer of an image has been deprecated. In order to maintain interoperability, we have migrated our images and supply chain artifacts to be attached at the individual layer for a specific platform or architecture of an image. If you would like to see more information, please see the notice from cosign [here](https://github.com/sigstore/cosign/blob/main/specs/SBOM_SPEC.md).
 
@@ -147,7 +149,9 @@ This will guide you through validating the signatures and attestations of each i
 
       If using `Hauler` to seed your registry, Hauler will automatically verify the signatures when the public key is set in the manifest or as a flag with `--key`.
 
-      > **NOTE:** You'll need to substitute `rgcrprod.azurecr.us` with your own registry domain, if verifying images in your own registry.
+      :::note
+      If you're verifying images in your own registry, substitute `rgcrprod.azurecr.us` with your own registry domain.
+      :::
 
       In Carbide Images v2 (or Cosign v2), the attachment of supply chain artifacts to the top layer of an image has been deprecated. In order to maintain interoperability, we have migrated our images and supply chain artifacts to be attached at the individual layer for a specific platform or architecture of an image. If you would like to see more information, please see the notice from cosign [here](https://github.com/sigstore/cosign/blob/main/specs/SBOM_SPEC.md).
 

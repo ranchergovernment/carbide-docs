@@ -2,15 +2,17 @@
 
 ## K3s
 
-### Reverting to DockerHub Images (Private Registry)
+### Reverting to Docker Hub Images (Private Registry)
 
 If using a private registry, to revert from using the Carbide Secured Images to the normal Rancher images, you simply need to follow the docs to pull the normal images and overwrite them in your registry: https://docs.k3s.io/installation/airgap
 
-Upon restart of your pods, they should be utilizing the upstream images.
+Upon restart of your pods, they should be using the upstream images.
 
-**NOTE**: If you've configured enforcement using Kubewarden or Kyverno, be sure to disable/uninstall to avoid policy enforcement blocking DockerHub images.
+:::note
+If you've configured enforcement using Kubewarden or Kyverno, be sure to disable or uninstall it first to avoid policy enforcement blocking the Docker Hub images.
+:::
 
-### Reverting to DockerHub Images (Directly)
+### Reverting to Docker Hub Images (Directly)
 
 If you want to revert to using images directly from Docker Hub, you'll need to delete the `registries.yaml` configuration file made [here](configuration/kubernetes.md#usage-with-k3s).
 
@@ -30,13 +32,13 @@ curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server --flannel-backend none" 
 
 ## RKE2
 
-### Reverting to DockerHub Images (Private Registry)
+### Reverting to Docker Hub Images (Private Registry)
 
 If using a private registry, to revert from using the Carbide Secured Images to the normal Rancher images, you simply need to follow the docs to pull the normal images and overwrite them in your registry: https://docs.rke2.io/install/airgap
 
-Upon restart of your pods, they should be utilizing the upstream images.
+Upon restart of your pods, they should be using the upstream images.
 
-### Reverting to DockerHub Images (Directly)
+### Reverting to Docker Hub Images (Directly)
 
 If you want to revert to using images directly from Docker Hub, you'll need to delete the `registries.yaml` configuration file made [here](configuration/kubernetes.md#usage-with-rke2).
 
@@ -49,7 +51,9 @@ write-kubeconfig-mode: 0640
 ...
 ```
 
-To restart controlplane nodes, run: `systemctl restart rke2-server`
+To restart control plane nodes, run: `systemctl restart rke2-server`
 To restart agents, run: `systemctl restart rke2-agent`
 
-**NOTE:** For controlplane nodes, be sure to restart them one at a time.
+:::warning
+Restart control plane nodes one at a time.
+:::
