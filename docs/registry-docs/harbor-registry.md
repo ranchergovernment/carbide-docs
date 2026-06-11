@@ -13,7 +13,7 @@ Transitioning to the Harbor registry provides several performance and feature im
 
 ## Setting Up a Harbor Replication of Carbide to Private Registry
 
-1. In your Harbor dashboard, select Registries > New Endpoint. 
+1. In your Harbor dashboard, select `Registries` > `New Endpoint`. 
 
 2. Select `Docker Registry` as your provider, and `https://registry.ranchercarbide.dev` as the endpoint URL. Enter your username and password in the Access ID and Access Secret fields.
 

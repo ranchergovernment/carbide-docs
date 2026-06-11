@@ -165,6 +165,6 @@ configs:
       password: <redacted>
 ```
 
-For more information on registry configuration, check out the RKE2 docs [here](https://docs.rke2.io/install/containerd_registry_configuration).
+For more information on registry configuration, check out the RKE2 docs [here](https://docs.rke2.io/install/private_registry).
 
 For more detailed information about Air-Gapped Rancher, check out the Rancher docs [here](https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install).

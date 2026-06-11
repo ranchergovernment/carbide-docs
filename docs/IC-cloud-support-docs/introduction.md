@@ -5,7 +5,7 @@
 
 ## What does this mean? 
 
-**Rancher Government** enables Carbide customers to use the Rancher Manager User Interface (UI), a Helm Chart, and/or Fleet (GitOps) to deploy, provision, and manage RKE2 and K3S clusters in IC cloud regions. The tech preview currently supports AWS EC2 Instances, in classified region C2S.
+**Rancher Government** enables Carbide customers to use the Rancher Manager user interface (UI), a Helm Chart, and/or Fleet (GitOps) to deploy, provision, and manage RKE2 and K3S clusters in IC cloud regions. It currently supports AWS EC2 instances in classified region C2S.
 
 Rancher Government Solutions actively tests and validates this configuration through regions in [**AWS GovCloud**](https://aws.amazon.com/govcloud-us/) and [**Sequoia Combine**](https://www.sequoiainc.com/combine) (Classified Cloud Region Emulator).
 
@@ -45,13 +45,3 @@ Utilizing Rancher provisioning in IC Cloud Regions allows you to take advantage 
 | Automated Cluster Encryption Key Rotation | | &#x2713; |
 | Ability to Snapshot, Backup, & Restore | | &#x2713; |
 | Configuring PSS/PSA/PSP | | &#x2713; |
-
-## Future State
-
-As **Rancher Government Solutions** works towards general availability (GA) of IC Cloud Support, we seek to achieve parity between commercial and IC cloud regions. We plan to augment the current state in the following ways:
-
-- **Principle of Least Privileged Access:** Pod Level Permissions vs Node Level Permissions
-- **Reducing Implementation/Migration Burden:** Utilizing Rancher Manager UI Extensions (i.e STIGATRON)
-- **Additional Functionality:** Carbide Provisioning for all supported drivers (i.e. AWS EKS)
-
-If you have additional feedback, please submit issues to our [GitHub](https://github.com/ranchergovernment/carbide) or [contact support](https://support.rancherfederal.com/). 

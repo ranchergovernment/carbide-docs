@@ -8,7 +8,7 @@ As Rancher has a dependency on Cert Manager, you'll need to update your Helm ins
 
 ### Using Your Own Registry
 
-If using your own registry, you simply need to [collect](https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/publish-images#2-collect-the-cert-manager-image) the necessary images for cert-manager and overwrite those images in your registry.
+If using your own registry, you simply need to [collect the necessary images](https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/publish-images#2-collect-the-cert-manager-image) for cert-manager and overwrite those images in your registry.
 
 As pods cycle, the new image should propagate across the cluster.
 

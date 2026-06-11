@@ -42,7 +42,7 @@ For more information about installing Kubewarden, see the [docs](https://docs.ku
 
 ### Private Registry
 
-If your Rancher system images are in a private registry requiring authentication, you'll need to configure your Kubewarden policy-server with a [Pull Secret](https://docs.kubewarden.io/operator-manual/policy-servers/private-registry) in order for it to validate the signature.
+If your Rancher system images are in a private registry requiring authentication, you'll need to configure your Kubewarden policy-server with a [Pull Secret](https://docs.kubewarden.io/admission-controller/1.36/en/howtos/policy-servers/02-private-registry.html#_creating_the_secret) in order for it to validate the signature.
 
 ### Copying Policy Artifact to a Registry (Connected Environments)
 
@@ -181,7 +181,7 @@ Follow the instructions to install [Kyverno](https://kyverno.io/docs/installatio
 
 ### Private Registry
 
-If your Rancher system images are in a private registry requiring authentication, you'll need to configure your Kyverno policy-server with a [Pull Secret](https://kyverno.io/policies/other/require_imagepullsecrets/require_imagepullsecrets) in order for it to validate the signature.
+If your Rancher system images are in a private registry requiring authentication, you'll need to configure your Kyverno policy-server with a [Pull Secret](https://kyverno.io/docs/policy-types/cluster-policy/verify-images/sigstore/#authentication) in order for it to validate the signature.
 
 ### Creating the Policy
 

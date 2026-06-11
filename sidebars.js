@@ -93,7 +93,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'IC Cloud Support (Tech Preview)',
+      label: 'IC Cloud Support',
       collapsed: false,
       items: [
         'IC-cloud-support-docs/introduction',

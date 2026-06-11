@@ -30,7 +30,7 @@ sudo mv cosign-linux-amd64 /usr/local/bin/cosign
 sudo chmod 755 /usr/local/bin/cosign
 ```
 
-For more options, visit the [Cosign install docs](https://docs.sigstore.dev/system_config/installation).
+For more options, visit the [Cosign install docs](https://docs.sigstore.dev/cosign/system_config/installation/).
 
 ## Recommended Tooling
 

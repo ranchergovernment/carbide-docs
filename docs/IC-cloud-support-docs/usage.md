@@ -1,6 +1,6 @@
 # Provisioning Clusters
 
-The following instructions apply to the Amazon EC2 C2S region, which is currently available in Tech Preview.
+The following instructions apply to the Amazon EC2 C2S region.
 
 ## Creating a Carbide Cloud Credential
 
@@ -34,7 +34,7 @@ The following instructions apply to the Amazon EC2 C2S region, which is currentl
 
 ### Registry Configuration
 
-When using a private registry, downstream clusters must be configured with correct authentication and certificate information to access that registry via the [registries.yaml](https://docs.rke2.io/install/containerd_registry_configuration) file. Rancher provisioned clusters can be configured through the UI to generate the registries.yaml file.
+When using a private registry, downstream clusters must be configured with correct authentication and certificate information to access that registry via the [registries.yaml](https://docs.rke2.io/install/private_registry) file. Rancher provisioned clusters can be configured through the UI to generate the registries.yaml file.
 
 1. Under the `Cluster Configuration` section when provisioning a cluster, select the `Registries` section.
 
@@ -42,4 +42,4 @@ When using a private registry, downstream clusters must be configured with corre
 
 3. If advanced configuration (mirroring, certificates, additional authentication) is required, add those to the advanced settings.
 
-For more information, see the [RKE2 Containerd Registry Configuration](https://docs.rke2.io/install/containerd_registry_configuration) documentation.
+For more information, see the [RKE2 Containerd Registry Configuration](https://docs.rke2.io/install/private_registry) documentation.
