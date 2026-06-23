@@ -1,6 +1,10 @@
 # Carbide Helm Charts
 
-Along with our secured images, we also provide helm charts through the CSR to install various components of the Carbide product suite. These charts include the necessary components to run [STIGATRON](https://rancherfederal.github.io/carbide-docs/docs/stigatron-docs/introduction), an airgapped copy of all Rancher product docs, and a custom build of Rancher with our white-labeling.
+Along with our secured images, we also provide helm charts through the CSR to install various components of the Carbide product suite. These charts include the necessary components to run [STIGATRON](/docs/stigatron-docs/introduction), an airgapped copy of all Rancher product docs, and a custom build of Rancher with our white-labeling.
+
+:::danger Deprecated
+STIGATRON is deprecated in favor of the more tightly integrated [Rancher Compliance Operator](/docs/compliance-operator-docs/rke2-stig-scans). The operator replicates the STIG checks that STIGATRON performs. See linked documentation for details.
+:::
 
 **Available Helm Charts**
 ```bash
@@ -43,7 +47,7 @@ If you would like to add the Carbide Helm Charts to the Rancher Chart Catalog (s
 
 #### In Connected Environment
 
-Generate the Hauler manfiest for the Carbide Helm Charts:
+Generate the Hauler manifest for the Carbide Helm Charts:
 
 ```bash
 cat <<EOF > carbide-charts.yaml

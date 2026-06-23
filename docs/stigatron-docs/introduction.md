@@ -1,6 +1,8 @@
 # Introduction
 
->:warning: **DEPRECATION NOTICE**: Please note, STIGATRON is now deprecated in favor of the more tightly integrated [Rancher Compliance Operator](/docs/compliance-operator-docs/rke2-stig-scans/). The operator replicates the STIG checks performed by STIGATRON. Please see documentation for more details. 
+:::danger Deprecated
+STIGATRON is deprecated in favor of the more tightly integrated [Rancher Compliance Operator](/docs/compliance-operator-docs/rke2-stig-scans). The operator replicates the STIG checks that STIGATRON performs. See linked documentation for details.
+:::
 
 This section will walk through installation and usage of the STIGATRON component of Rancher Government Carbide.
 
@@ -14,11 +16,3 @@ STIGATRON was developed to alleviate the pain points of traditional management a
 2. These scans will provide a mapping of the current state of the cluster against the controls with the RKE2 DISA STIG.
 3. Users can visualize the results of these scans from the Rancher UI by accessing the MITRE Heimdall2 interface. This provides current compliance status, tree maps mapping to NIST 800-53 controls, and a detailed breakdown of each check performed, including the commands executed, the output of those commands, and what steps can be performed to mitigate any failures.
 4. Users can also export the scan results into the common formats required by Cyber Systems within the federal space. This includes `XCCDF` and `results.json`.
-
-## IOC Expectations
-
-As our product is still at Initial Operation Capability (IOC), there are some expectations to level-set:
-
-- Installation and packaging is still in progress and improving.
-
-If you see issues and areas for improvement, please submit Github issues [here](https://github.com/rancherfederal/carbide-charts/issues).

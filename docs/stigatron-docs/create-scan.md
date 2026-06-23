@@ -1,6 +1,8 @@
 # Creating STIGATRON Scans
 
->:warning: **DEPRECATION NOTICE**: Please note, STIGATRON is now deprecated in favor of the more tightly integrated [Rancher Compliance Operator](/docs/compliance-operator-docs/rke2-stig-scans/). The operator replicates the STIG checks performed by STIGATRON. Please see documentation for more details. 
+:::danger Deprecated
+STIGATRON is deprecated in favor of the more tightly integrated [Rancher Compliance Operator](/docs/compliance-operator-docs/rke2-stig-scans). The operator replicates the STIG checks that STIGATRON performs. See linked documentation for details.
+:::
 
 1. After installing STIGATRON on your downstream cluster, when you navigate to that downstream cluster, you should see `STIGATRON` on the left navigation menu. Click there.
 
@@ -16,7 +18,7 @@
 
 ## Profile Selection
 
-When selecting a STIGATRON Scan Profile, there are 2 options for each support Kubernetes version:
+When selecting a STIGATRON scan profile, there are two options for each supported Kubernetes version:
 
 * Official: This is the officially certified version from DISA. While fully certified, it may be missing the latest security requirements currently in process for STIG reevaluations and fixes.
 * Preview: This is the latest version currently being worked and submitted to DISA from Rancher Government. This will contain the latest STIG fixes and reevaluations, even before being fully certified.

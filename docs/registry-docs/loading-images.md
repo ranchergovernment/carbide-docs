@@ -1,10 +1,10 @@
 # Loading Images to a Registry
 
-Once you've downloaded your desired images from the Carbide Secured Registry (CSR), follow these steps to load copy the content to your airgapped registry. 
+Once you've downloaded your images from the Carbide Secured Registry (CSR), follow these steps to load them into your airgapped registry.
 
-These instructions assume you have [downloaded the images](downloading-images.md) and transferred the tarballs to your airgapped environment.
+These instructions assume you have [downloaded the images](downloading-images.md) and transferred the tarballs into your airgapped environment.
 
-This example uses [Hauler](https://docs.hauler.dev/docs/intro), but any tool with the ability to push/pull an OCI image will be adequate.
+These examples use [Hauler](https://docs.hauler.dev/docs/intro), but any tool that can push and pull OCI images will work.
 
 ## Adding Images to Airgap Registry
 

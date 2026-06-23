@@ -1,3 +1,6 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Enforcement
 
 Policy enforcement engines can be used to validate your cluster images against our public key. This will ensure only the images from our hardened registry are allowed to run.
@@ -32,22 +35,30 @@ helm install --wait -n kubewarden kubewarden-controller kubewarden/kubewarden-co
 4. Install the defaults helm chart.
 
 ```bash
-helm install --wait -n kubewarden kubewarden-defaults kubewarden/kubewarden-defaults --set "common.cattle.systemDefaultRegistry=<registry-url>" kubewarden/kubewarden-defaults
+helm install --wait -n kubewarden kubewarden-defaults kubewarden/kubewarden-defaults --set "common.cattle.systemDefaultRegistry=<registry-url>"
 ```
 
 For more information about installing Kubewarden, see the [docs](https://docs.kubewarden.io/quick-start#installation).
 
 ### Private Registry
 
-If your Rancher system images are in a private registry requiring authentication, you'll need to configure your Kubewarden policy-server with a [Pull Secret](https://docs.kubewarden.io/operator-manual/policy-servers/private-registry) in order for it to validate the signature.
+If your Rancher system images are in a private registry requiring authentication, you'll need to configure your Kubewarden policy-server with a [Pull Secret](https://docs.kubewarden.io/admission-controller/1.36/en/howtos/policy-servers/02-private-registry.html#_creating_the_secret) in order for it to validate the signature.
 
 ### Copying Policy Artifact to a Registry (Connected Environments)
 
 1. Fetch the image from the Carbide Secured Registry.
-
-```bash
-hauler store add image rgcrprod.azurecr.us/policies/verify-image-signatures:v0.1.7 --key carbide-key.pub --platform linux/amd64
-```
+<Tabs groupId="registry">
+   <TabItem value="harbor" label="Harbor Registry (Standard)" default>
+    ```bash
+    hauler store add image registry.ranchercarbide.dev/policies/verify-image-signatures:v0.1.7 --key carbide-key.pub --platform linux/amd64
+    ```
+    </TabItem>
+    <TabItem value="ACR" label="Azure Container Registry (Legacy)">
+    ```bash
+    hauler store add image rgcrprod.azurecr.us/policies/verify-image-signatures:v0.1.7 --key carbide-key.pub --platform linux/amd64
+    ```
+    </TabItem>
+</Tabs>
 
 2. Copy the content from the Hauler store to your registry.
 
@@ -63,9 +74,18 @@ Use the below steps, substituting your registry, to validate and locally save th
 
 1. Fetch the image from the Carbide Secured Registry.
 
-```bash
-hauler store add image rgcrprod.azurecr.us/policies/verify-image-signatures:v0.1.7 --key carbide-key.pub --platform linux/amd64
-```
+<Tabs groupId="registry">
+   <TabItem value="harbor" label="Harbor Registry (Standard)" default>
+    ```bash
+    hauler store add image registry.ranchercarbide.dev/policies/verify-image-signatures:v0.1.7 --key carbide-key.pub --platform linux/amd64
+    ```
+    </TabItem>
+    <TabItem value="ACR" label="Azure Container Registry (Legacy)">
+    ```bash
+    hauler store add image rgcrprod.azurecr.us/policies/verify-image-signatures:v0.1.7 --key carbide-key.pub --platform linux/amd64
+    ```
+    </TabItem>
+</Tabs>
 
 2. Save and output the content from the Hauler store to tarball.
 
@@ -161,7 +181,7 @@ Follow the instructions to install [Kyverno](https://kyverno.io/docs/installatio
 
 ### Private Registry
 
-If your Rancher system images are in a private registry requiring authentication, you'll need to configure your Kyverno policy-server with a [Pull Secret](https://kyverno.io/policies/other/require_imagepullsecrets/require_imagepullsecrets) in order for it to validate the signature.
+If your Rancher system images are in a private registry requiring authentication, you'll need to configure your Kyverno policy-server with a [Pull Secret](https://kyverno.io/docs/policy-types/cluster-policy/verify-images/sigstore/#authentication) in order for it to validate the signature.
 
 ### Creating the Policy
 
