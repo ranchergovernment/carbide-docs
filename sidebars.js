@@ -120,6 +120,16 @@ const sidebars = {
     },
     {
       type: 'category',
+      label: 'Liz: Rancher AI Agent',
+      collapsed: false,
+      items: [
+        'liz-ai-agent-docs/introduction',
+        'liz-ai-agent-docs/getting-started',
+        'liz-ai-agent-docs/uninstall',
+      ],
+    },
+    {
+      type: 'category',
       label: 'STIGATRON',
       collapsed: false,
       items: [
