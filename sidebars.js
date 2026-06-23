@@ -125,6 +125,7 @@ const sidebars = {
       items: [
         'liz-ai-agent-docs/introduction',
         'liz-ai-agent-docs/getting-started',
+        'liz-ai-agent-docs/uninstall',
       ],
     },
     {
