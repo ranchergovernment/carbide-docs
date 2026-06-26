@@ -65,6 +65,12 @@ This page walks through validating the signatures and attestations for each imag
       cosign verify-attestation --key carbide-key.pub registry.ranchercarbide.dev/carbide/carbide-docs@sha256:9cfda4875822b37f1e899c962e9bae5bb709235a1794834a839eaa74f429eb91 --type spdxjson | jq -r '.payload' | base64 -d | jq
       ```
 
+      The SBOM attestation contains additonal metadata. To view the SPDX only:
+
+        ```bash
+      cosign verify-attestation --key carbide-key.pub registry.ranchercarbide.dev/carbide/carbide-docs@sha256:9cfda4875822b37f1e899c962e9bae5bb709235a1794834a839eaa74f429eb91 --type spdxjson | jq -r '.payload' | base64 -d | jq '.predicate'
+      ```
+
       ### Viewing the Vulnerability Scan Results
 
       Verify the image's vulnerability attestation by validating the supplied signature:
