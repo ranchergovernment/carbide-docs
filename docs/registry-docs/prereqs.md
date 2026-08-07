@@ -9,6 +9,21 @@ Below is everything you need to get started with the Carbide Secured Registry (C
 The Carbide Secured Registry is **not** intended to be used as the primary registry for running Kubernetes clusters. It is only the acquisition point for obtaining Carbide images. Seed your own private registry from the CSR, and point your Kubernetes clusters at that registry.
 :::
 
+## Carbide Content Delivery Network
+
+To improve download performance, Carbide uses a Content Delivery Network (CDN) to cache container images and other artifacts closer to you.
+
+### Egress Allowlist for Registry & Portal Endpoints
+
+If your environment restricts outbound (egress) network traffic and requires you to allowlist specific domains, you will need to add the following:
+
+  * **cdn.ranchercarbide.dev**
+  * **carbide-hauler-bundle-bucket.s3.dualstack.us-gov-east-1.amazonaws.com**
+
+The CDN endpoint serves most downloads. The storage endpoint is used for a small number of large artifacts that exceed the CDN’s per-file size limit.
+
+If your environment does not restrict egress traffic, no action is required.
+
 ## Required Tooling
 
 **K8s Package Management: [Helm](https://helm.sh/docs)**

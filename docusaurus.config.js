@@ -68,7 +68,7 @@ const config = {
       },
       announcementBar: {
         id: 'url_change',
-        content: '⚠️ Carbide Docs will be changing its URL to <a href="https://docs.ranchercarbide.dev" target="_blank" rel="noopener noreferrer">https://docs.ranchercarbide.dev</a> in the near future. Please update your bookmarks. ⚠️',
+        content: '⚠️ Performance improvements are coming to the Carbide Registry and Portal on Monday, September 14, 2026! Click <a href="https://docs.ranchercarbide.dev/docs/registry-docs/prereqs#carbide-content-delivery-network" target="_blank" rel="noopener noreferrer">here</a> to learn what you need to know. ⚠️',
         backgroundColor: '#ffff92',
         textColor: '#000000',
         isCloseable: true,
