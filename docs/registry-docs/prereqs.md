@@ -63,7 +63,7 @@ For more options, visit the [Hauler install docs](https://docs.hauler.dev/docs/i
 
 Download the public key for Carbide.
 ```bash
-curl -sfOL https://raw.githubusercontent.com/rancherfederal/carbide-releases/main/carbide-key.pub
+curl -sfOL https://raw.githubusercontent.com/ranchergovernment/carbide/main/carbide-key.pub
 ```
 View the public key for Carbide.
 ```bash
