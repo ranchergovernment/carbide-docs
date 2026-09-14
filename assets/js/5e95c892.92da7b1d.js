@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkcarbide_docs||=[]).push([[9647],{7121(e,r,s){s.r(r),s.d(r,{default:()=>l});s(6540);var a=s(4164),c=s(7559),u=s(5500),d=s(2831),t=s(2835),i=s(4848);function l(e){return(0,i.jsx)(u.e3,{className:(0,a.A)(c.G.wrapper.docsPages),children:(0,i.jsx)(t.A,{children:(0,d.v)(e.route.routes)})})}}}]);
