@@ -68,7 +68,7 @@ const config = {
       },
       announcementBar: {
         id: 'url_change',
-        content: '⚠️ Performance improvements are coming to the Carbide Registry and Portal on Monday, September 14, 2026! Click <a href="https://docs.ranchercarbide.dev/docs/registry-docs/prereqs#carbide-content-delivery-network" target="_blank" rel="noopener noreferrer">here</a> to learn what you need to know. ⚠️',
+        content: '⚠️ Performance improvements for Carbide Registry and Portal are now live! Click <a href="https://docs.ranchercarbide.dev/docs/registry-docs/prereqs#carbide-content-delivery-network" target="_blank" rel="noopener noreferrer">here</a> to learn what you need to know. ⚠️',
         backgroundColor: '#ffff92',
         textColor: '#000000',
         isCloseable: true,
