@@ -124,7 +124,7 @@ const sidebars = {
       collapsed: false,
       items: [
         'rke2-stig-docs/overview',
-        'rke2-stig-docs/considerations',
+        'rke2-stig-docs/considerations-and-prereqs',
         'rke2-stig-docs/installation',
         'rke2-stig-docs/configuration',
       ],
