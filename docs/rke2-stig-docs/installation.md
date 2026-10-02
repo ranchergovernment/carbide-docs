@@ -63,20 +63,22 @@ This option uses [Hauler](https://docs.hauler.dev/docs/intro). Follow the [Haule
     hauler store load --filename rke2-stig.tar.zst
     ```
 
-2. List the contents of the store to confirm the artifact references.
+2. List the RKE2 STIG artifacts in the store. These include the binary tarball, checksum file, and install script, and are the artifacts whose references contain `/carbide/`. This command requires `jq`.
 
     ```bash
-    hauler store info
+    hauler store info --output json | jq -r '[.artifacts[].reference | select(contains("/carbide/"))] | unique[]'
     ```
 
-3. Extract the RKE2 STIG binary tarball, checksum file, and install script into a working directory.
+3. Extract each of those artifacts into a working directory.
 
     ```bash
     mkdir -p /root/rke2-artifacts && cd /root/rke2-artifacts
-    hauler store extract rke2:<VERSION>
-    hauler store extract rke2-sha256sum:<VERSION>
-    hauler store extract rke2-install:<VERSION>
+    for ref in $(hauler store info --output json | jq -r '[.artifacts[].reference | select(contains("/carbide/"))] | unique[]'); do
+      hauler store extract "$ref"
+    done
     ```
+
+    You can also run `hauler store extract <REFERENCE>` individually for each reference listed in the previous step.
 
 ### Disconnected Environments
 

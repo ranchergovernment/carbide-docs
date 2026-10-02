@@ -4,6 +4,14 @@ RKE2 STIG comes preconfigured in a fully hardened state. Settings that are optio
 
 ## Prerequisites
 
+### Hauler
+
+The installation steps assume you are using [Hauler](https://docs.hauler.dev/docs/intro) to fetch, transfer, and load the RKE2 STIG artifacts. Hauler must be installed on the connected machine you use to download the artifacts and on each node you install RKE2 STIG on. See the [Hauler installation instructions](https://docs.hauler.dev/docs/introduction/install).
+
+### jq (Recommended)
+
+[jq](https://jqlang.org/) is not required, but it is recommended on each node. The installation steps use it to filter the Hauler store contents down to the RKE2 STIG artifacts that need to be extracted. Without `jq`, you can identify those artifacts manually from the output of `hauler store info`.
+
 ### SELinux Packages
 
 RKE2 STIG installs its own RKE2 SELinux policies, but those policies depend on additional packages that must be present on the node. Which packages you need depends on how the cluster is deployed.
