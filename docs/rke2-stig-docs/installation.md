@@ -22,7 +22,7 @@ Download the RKE2 STIG artifacts on a connected machine using one of the followi
 
 ### Option A: Download from the Carbide Portal
 
-Log in to the [Carbide Portal](https://portal.ranchercarbide.dev), select RKE2 STIG, and download the pre-built Hauler tarball for your version. Then skip to [Step 2](#step-2-load-the-artifacts-on-the-node).
+Log in to the [Carbide Portal](https://portal.ranchercarbide.dev), select RKE2 STIG, and download the pre-built Hauler tarball for your version. Then skip to [Step 2](#step-2-load-the-artifacts).
 
 ### Option B: Sync with Hauler
 
@@ -55,7 +55,7 @@ This option uses [Hauler](https://docs.hauler.dev/docs/intro). Follow the [Haule
 
 3. Copy `rke2-stig.tar.zst` and the Hauler binary to the RKE2 STIG node.
 
-## Step 2: Load the Artifacts on the Node
+## Step 2: Load the Artifacts
 
 1. On the node, load the tarball into a local Hauler store.
 
@@ -78,12 +78,35 @@ This option uses [Hauler](https://docs.hauler.dev/docs/intro). Follow the [Haule
     hauler store extract rke2-install:<VERSION>
     ```
 
-4. Save the RKE2 STIG images directly into the containerd images directory.
+### Disconnected Environments
 
-    ```bash
-    mkdir -p /var/lib/rancher/rke2/agent/images/
-    hauler store save --containerd --filename /var/lib/rancher/rke2/agent/images/rke2-stig.tar.zst
-    ```
+If you are running in an air-gapped environment, make the RKE2 STIG images available to the node using one of the following options.
+
+#### Option A: Copy the Images to the Local Images Directory
+
+Save the images from the Hauler store directly into the RKE2 images directory. RKE2 imports any image tarballs in this directory into containerd on startup. Repeat this on every node in the cluster.
+
+```bash
+mkdir -p /var/lib/rancher/rke2/agent/images/
+hauler store save --containerd --filename /var/lib/rancher/rke2/agent/images/rke2-stig.tar.zst
+```
+
+#### Option B: Copy the Images to an Existing Registry
+
+If you already have a private registry in your environment, use Hauler to copy the store contents to it. If the registry requires authentication, log in first.
+
+```bash
+hauler login <REGISTRY_URL> -u <username> -p <password>
+hauler store copy registry://<REGISTRY_URL>
+```
+
+Then configure RKE2 STIG to pull its images from that registry by adding the following to `/etc/rancher/rke2/config.yaml` on each node:
+
+```yaml
+system-default-registry: <REGISTRY_URL>
+```
+
+If the registry requires authentication or uses a private certificate authority, also configure `/etc/rancher/rke2/registries.yaml`. See the upstream [private registry documentation](https://docs.rke2.io/install/private_registry) for details.
 
 ## Step 3: Install RKE2 STIG
 
