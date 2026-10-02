@@ -120,6 +120,17 @@ const sidebars = {
     },
     {
       type: 'category',
+      label: 'RKE2 STIG',
+      collapsed: false,
+      items: [
+        'rke2-stig-docs/overview',
+        'rke2-stig-docs/considerations',
+        'rke2-stig-docs/installation',
+        'rke2-stig-docs/configuration',
+      ],
+    },
+    {
+      type: 'category',
       label: 'Liz: Rancher AI Agent',
       collapsed: false,
       items: [
