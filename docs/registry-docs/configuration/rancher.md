@@ -162,13 +162,17 @@ To configure Rancher to use the airgapped UI extenstions:
  hauler store copy registry://my.private.registry
  ```
 
- 3. Install the chart on your Rancher cluster.
+ 3. Install or upgrade the chart on your Rancher cluster.
 
  ```
  helm install ui-plugin-catalog oci://my.private.registry/carbide-charts/ui-plugin-catalog --version 4.43.0 --namespace cattle-ui-plugin-system --create-namespace --set global.cattle.systemDefaultRegistry=my.private.registry
  ```
 
- 4. In the Rancher UI, go to Apps > Repositories. You should see `ui-plugin-catalog-repo` with the service URL `http://ui-plugin-catalog-svc.cattle-ui-plugin-system:8080`. Disable the `rancher` repo at `https://github.com/rancher/ui-plugin-charts` as these are the default connected charts,not the airgapped ones. 
+ ```
+ helm upgrade ui-plugin-catalog oci://my.private.registry/carbide-charts/ui-plugin-catalog --version 4.47.0 --namespace cattle-ui-plugin-system --set global.cattle.systemDefaultRegistry=my.private.registry
+ ```
+
+ 4. In the Rancher UI, go to Apps > Repositories. You should see `ui-plugin-catalog-repo` with the service URL `http://ui-plugin-catalog-svc.cattle-ui-plugin-system:8080`. Disable the `rancher` repo at `https://github.com/rancher/ui-plugin-charts` as these are the default connected charts, not the airgapped ones. 
 
  5. Navigate to the Extensions tab. You should see any installed extensions, as well as the available options included with the airgapped catalog.
 
