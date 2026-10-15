@@ -27,7 +27,7 @@ Rancher Carbide is tactically built with the following enhancements over the com
 | [RGS Application Collection](/docs/app-collection-docs/introduction) | A curated, production-ready set of trusted developer and infrastructure applications. |
 | [IC Cloud Support](/docs/IC-cloud-support-docs/introduction) | Native Rancher provisioning on Intelligence Community cloud regions. |
 | [Rancher Compliance Operator](/docs/compliance-operator-docs/rke2-stig-scans) | Run RKE2 STIG scans against downstream clusters from the Rancher UI. |
-| [Airgapped Docs](/docs/airgapped-docs/introduction) | The entire supported Rancher product portfolio, available inside an airgap. |
+| [Offline Docs](/docs/offline-docs/introduction) | The entire supported Rancher product portfolio, available inside an airgap. |
 
 New to Carbide? Start with the [Carbide Secured Registry](/docs/registry-docs/introduction) — it's the acquisition point for everything else.
 

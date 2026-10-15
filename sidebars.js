@@ -155,19 +155,19 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Airgapped Docs',
+      label: 'Offline Docs',
       collapsed: false,
       items: [
-        'airgapped-docs/introduction',
+        'offline-docs/introduction',
         {
           type: 'category',
           label: 'Installation',
           items: [
-            'airgapped-docs/prereqs',
-            'airgapped-docs/installation',
+            'offline-docs/prereqs',
+            'offline-docs/installation',
           ],
         },
-        'airgapped-docs/uninstall',
+        'offline-docs/uninstall',
       ],
     },
     'known-limits',
