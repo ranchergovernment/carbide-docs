@@ -114,8 +114,8 @@ const config = {
                 to: '/docs/stigatron-docs/introduction',
               },
               {
-                label: 'Airgapped Docs',
-                to: '/docs/airgapped-docs/introduction',
+                label: 'Offline Docs',
+                to: '/docs/offline-docs/introduction',
               },
             ],
           },
