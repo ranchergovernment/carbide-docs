@@ -2,7 +2,7 @@
 
 Carbide Offline Docs ships as a Helm chart, `carbide-offline-docs`, plus one container image per docs site. Both are published to the Carbide as part of the [Offline Docs product](https://portal.ranchercarbide.dev/product/offline-docs):
 
-- **Chart:** `oci://registry.ranchercarbide.dev/carbide/carbide-offline-docs`
+- **Chart:** `oci://registry.ranchercarbide.dev/carbide-charts/carbide-offline-docs`
 - **Images:** `registry.ranchercarbide.dev/carbide/docs-<key>:<tag>`, for example `docs-rancher:latest`
 
 To install, copy the chart and images into your registry, then install the chart on the Rancher `local` cluster.
@@ -53,7 +53,7 @@ Copy the chart and images to your registry:
 hauler store copy --username <redacted> --password <redacted> registry://<registry-url>
 ```
 
-The chart and images keep their `carbide/` path, so the chart lands at `oci://<registry-url>/carbide/carbide-offline-docs` and the images at `<registry-url>/carbide/docs-<key>:latest`. Run `hauler store info` to see the exact references in your store.
+The chart and images keep their `carbide/` path, so the chart lands at `oci://<registry-url>/carbide-charts/carbide-offline-docs` and the images at `<registry-url>/carbide/docs-<key>:latest`. Run `hauler store info` to see the exact references in your store.
 
 ## Install the Chart
 
@@ -69,7 +69,7 @@ On the Rancher `local` cluster, run the following Helm command, substituting you
 helm install carbide-offline-docs -n carbide-docs-system --create-namespace \
   --set "image.registry=<registry-url>" \
   --version 2.0.0-latest \
-  oci://<registry-url>/carbide/carbide-offline-docs
+  oci://<registry-url>/carbide-charts/carbide-offline-docs
 ```
 
 Check the status of the rollout:
@@ -99,7 +99,7 @@ helm install -n carbide-docs-system --create-namespace \
   --set "image.registry=<registry-url>" \
   --set "docs.neuvector.enabled=false" \
   --version 2.0.0-latest \
-  carbide-offline-docs oci://<registry-url>/carbide/carbide-offline-docs
+  carbide-offline-docs oci://<registry-url>/carbide-charts/carbide-offline-docs
 ```
 
 To deploy only a few sites, use a values file that disables the rest. This example lists every docs site key:
@@ -145,7 +145,7 @@ docs:
 helm install -n carbide-docs-system --create-namespace \
   -f offline-docs-values.yaml \
   --version 2.0.0-latest \
-  carbide-offline-docs oci://<registry-url>/carbide/carbide-offline-docs
+  carbide-offline-docs oci://<registry-url>/carbide-charts/carbide-offline-docs
 ```
 
 ## Configuration
@@ -181,7 +181,7 @@ When a new chart version is available, copy it into your registry and upgrade:
 helm upgrade -n carbide-docs-system \
   --reuse-values \
   --version <chart-version> \
-  carbide-offline-docs oci://<registry-url>/carbide/carbide-offline-docs
+  carbide-offline-docs oci://<registry-url>/carbide-charts/carbide-offline-docs
 ```
 
 ## Migrating from Airgapped Docs
