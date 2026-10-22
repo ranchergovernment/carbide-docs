@@ -1,0 +1,8 @@
+{
+  "label": "Offline Docs",
+  "position": 7,
+  "link": {
+    "type": "generated-index",
+    "description": "Offline Docs for the Entire Carbide Platform"
+  }
+}

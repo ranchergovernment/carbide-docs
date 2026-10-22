@@ -139,3 +139,41 @@ The empty `url` string tells Rancher to use local KDM data instead of fetching i
 :::warning
 If Rancher has already fetched a newer version of KDM, the local data file may contain extra versions of RKE2 and k3s. Verify which images are available in your private registry before provisioning a cluster to avoid failures.
 :::
+
+## Configure the RGS UI Plugin Catalog
+
+The Rancher product in the Carbide Portal ships with RGS' fork of the `ui-plugin-catalog` image. This image contains everything you need to run UI extensions in airgapped environments. Additionally, we provide a helm chart that creates the necessary deployment and service to populate the UI extension catalog in the Rancher UI. 
+
+To configure Rancher to use the airgapped UI extenstions:
+
+1. Retrieve the UI plugin catalog chart and image. The image is also included in the Rancher product bundle. 
+
+```
+ hauler store sync --products ui-plugin-catalog=4.47.0 --platform linux/amd64 --product-registry registry.ranchercarbide.dev
+ ```
+
+ Or, download the Hauler bundle from the [Carbide Portal](https://portal.ranchercarbide.dev/product/ui-plugin-catalog).
+
+ > Note: Please confirm which version of the UI Plugin Catalog is compatible with the version of Rancher you are using. The version should match the image included with that version of [Rancher](https://portal.ranchercarbide.dev/product/rancher) under OCI Images.
+
+ 2. In the airgap, copy the chart to your private registry. 
+
+ ```
+ hauler store copy registry://my.private.registry
+ ```
+
+ 3. Install or upgrade the chart on your Rancher cluster.
+
+ ```
+ helm install ui-plugin-catalog oci://my.private.registry/carbide-charts/ui-plugin-catalog --version 4.43.0 --namespace cattle-ui-plugin-system --create-namespace --set global.cattle.systemDefaultRegistry=my.private.registry
+ ```
+
+ ```
+ helm upgrade ui-plugin-catalog oci://my.private.registry/carbide-charts/ui-plugin-catalog --version 4.47.0 --namespace cattle-ui-plugin-system --set global.cattle.systemDefaultRegistry=my.private.registry
+ ```
+
+ 4. In the Rancher UI, go to Apps > Repositories. You should see `ui-plugin-catalog-repo` with the service URL `http://ui-plugin-catalog-svc.cattle-ui-plugin-system:8080`. Disable the `rancher` repo at `https://github.com/rancher/ui-plugin-charts` as these are the default connected charts, not the airgapped ones. 
+
+ 5. Navigate to the Extensions tab. You should see any installed extensions, as well as the available options included with the airgapped catalog.
+
+ >Note: If you had previously installed extensions using the connected repository, upgrade or reinstall extensions to update the endpoint to the correct service that will function in airgap.
