@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Rancher Configuration | Rancher Government Carbide</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://docs.ranchercarbide.dev/docs/registry-docs/configuration/rancher"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Rancher Configuration | Rancher Government Carbide"><meta data-rh="true" name="description" content="This page will walk you through how to configure Rancher to use images from the CSR instead of the upstream Docker Hub images. This will apply to both its own components and downstream Rancher Kubernetes clusters (RKE2/K3s)."><meta data-rh="true" property="og:description" content="This page will walk you through how to configure Rancher to use images from the CSR instead of the upstream Docker Hub images. This will apply to both its own components and downstream Rancher Kubernetes clusters (RKE2/K3s)."><link data-rh="true" rel="icon" href="/img/carbide-logo.ico"><link data-rh="true" rel="canonical" href="https://docs.ranchercarbide.dev/docs/registry-docs/configuration/rancher"><link data-rh="true" rel="alternate" href="https://docs.ranchercarbide.dev/docs/registry-docs/configuration/rancher" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.ranchercarbide.dev/docs/registry-docs/configuration/rancher" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Rancher Configuration","item":"https://docs.ranchercarbide.dev/docs/registry-docs/configuration/rancher"}]}</script><link rel="stylesheet" href="/assets/css/styles.9067c8f6.css">
-<script src="/assets/js/runtime~main.4aab8057.js" defer="defer"></script>
-<script src="/assets/js/main.2b4820a4.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.0530d132.js" defer="defer"></script>
+<script src="/assets/js/main.5fde927f.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
@@ -83,12 +83,11 @@
 <div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">helm install ui-plugin-catalog oci://my.private.registry/carbide-charts/ui-plugin-catalog --version 4.43.0 --namespace cattle-ui-plugin-system --create-namespace --set global.cattle.systemDefaultRegistry=my.private.registry</span><br></div></code></pre></div></div>
 <div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">helm upgrade ui-plugin-catalog oci://my.private.registry/carbide-charts/ui-plugin-catalog --version 4.47.0 --namespace cattle-ui-plugin-system --set global.cattle.systemDefaultRegistry=my.private.registry</span><br></div></code></pre></div></div>
 <ol start="4">
-<li class="">
-<p>In the Rancher UI, go to Apps &gt; Repositories. You should see <code>ui-plugin-catalog-repo</code> with the service URL <code>http://ui-plugin-catalog-svc.cattle-ui-plugin-system:8080</code>. Disable the <code>rancher</code> repo at <code>https://github.com/rancher/ui-plugin-charts</code> as these are the default connected charts, not the airgapped ones.</p>
-</li>
-<li class="">
-<p>Navigate to the Extensions tab. You should see any installed extensions, as well as the available options included with the airgapped catalog.</p>
-</li>
+<li class="">In the Rancher UI, go to Apps &gt; Repositories. You should see <code>ui-plugin-catalog-repo</code> with the service URL <code>http://ui-plugin-catalog-svc.cattle-ui-plugin-system:8080</code>. Disable the <code>rancher</code> repo at <code>https://github.com/rancher/ui-plugin-charts</code> as these are the default connected charts, not the airgapped ones.</li>
+</ol>
+<p>After a helm upgrade, you may need to manually refresh the repo to see new extension versions. Select <code>ui-plugin-catalog-repo</code>, then click <code>Refresh</code> at the top of the page.</p>
+<ol start="5">
+<li class="">Navigate to the Extensions tab. You should see any installed extensions, as well as the available options included with the airgapped catalog.</li>
 </ol>
 <blockquote>
 <p>Note: If you had previously installed extensions using the connected repository, upgrade or reinstall extensions to update the endpoint to the correct service that will function in airgap.</p>
