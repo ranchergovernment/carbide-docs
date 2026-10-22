@@ -12,7 +12,11 @@ The installation steps assume you are using [Hauler](https://docs.hauler.dev/doc
 
 [jq](https://jqlang.org/) is not required, but it is recommended on each node. The installation steps use it to filter the Hauler store contents down to the RKE2 Government artifacts that need to be extracted. Without `jq`, you can identify those artifacts manually from the output of `hauler store info`.
 
-### SELinux Packages
+### Host Preparation
+
+RKE2 Government applies its own SELinux policies and hardened configuration, but some host-level prerequisites are outside of what the installation manages. Complete the following on each node **before** installing RKE2 Government.
+
+#### SELinux Packages
 
 RKE2 Government installs its own RKE2 SELinux policies, but those policies depend on additional packages that must be present on the node. Which packages you need depends on how the cluster is deployed.
 
@@ -24,7 +28,7 @@ RKE2 Government installs its own RKE2 SELinux policies, but those policies depen
 
 Install the required packages on every server and agent node **before** installing RKE2 Government.
 
-#### container-selinux
+##### container-selinux
 
 If you are running on an SELinux-enabled system, ensure the `container-selinux` package is installed. It provides the base container SELinux policy that the RKE2 policies build on, and is available from your operating system's package repositories:
 
@@ -32,15 +36,15 @@ If you are running on an SELinux-enabled system, ensure the `container-selinux` 
 sudo dnf install -y container-selinux
 ```
 
-#### rancher-selinux
+##### rancher-selinux
 
 If you are running RKE2 Government under Rancher, you must also install the `rancher-selinux` package. It provides the SELinux policies required by Rancher components, such as monitoring and logging, that run on the cluster. See the Rancher [rancher-selinux](https://ranchermanager.docs.rancher.com/reference-guides/rancher-security/selinux-rpm/about-rancher-selinux) documentation for installation steps.
 
-#### harvester-selinux
+##### harvester-selinux
 
 If you are running RKE2 Government as a downstream cluster on Harvester, you must also install the `harvester-selinux` package. It provides the SELinux policies required by Harvester components, such as the Harvester CSI driver and cloud provider, that run on the cluster.
 
-#### Verify the Packages
+##### Verify the Packages
 
 Confirm that the required packages are installed before continuing:
 
@@ -53,6 +57,30 @@ Only the packages that apply to your deployment need to be present.
 :::note
 RKE2 Government supports only the air-gapped installation method. If your nodes cannot reach a package repository, download the required RPMs on a connected system and transfer them to each node, or install them from an internal repository mirror.
 :::
+
+#### Kernel Parameters
+
+Because RKE2 Government runs in CIS mode by default, the kubelet expects specific kernel parameters to be set on the host and will not start if they are missing. Set them on every server and agent node:
+
+```bash
+cat <<EOF | sudo tee /etc/sysctl.d/60-rke2-cis.conf
+vm.panic_on_oom=0
+vm.overcommit_memory=1
+kernel.panic=10
+kernel.panic_on_oops=1
+EOF
+sudo sysctl -p /etc/sysctl.d/60-rke2-cis.conf
+```
+
+#### etcd User
+
+In CIS mode, etcd runs as the `etcd` user and group rather than as root, and RKE2 will not start on a server node if they do not exist. Create them on every server node:
+
+```bash
+sudo useradd -r -c "etcd user" -s /sbin/nologin -M etcd -U
+```
+
+Agent nodes do not run etcd and do not need this user.
 
 ## Considerations
 
