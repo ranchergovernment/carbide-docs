@@ -39,14 +39,14 @@ This option uses [Hauler](https://docs.hauler.dev/docs/intro). Follow the [Haule
 <Tabs groupId="registry">
    <TabItem value="harbor" label="Harbor Registry (Standard)" default>
         ```bash
-        hauler login registry.ranchercarbide.dev -u <username> -p <password>
+        hauler login registry.ranchercarbide.dev -u <USERNAME> -p <PASSWORD>
         hauler store sync --products rke2-government=<VERSION> --product-registry registry.ranchercarbide.dev --key carbide-key.pub --platform linux/amd64
         hauler store save --filename rke2-government.tar.zst
         ```
     </TabItem>
     <TabItem value="ACR" label="Azure Container Registry (Legacy)">
         ```bash
-        hauler login rgcrprod.azurecr.us -u <username> -p <password>
+        hauler login rgcrprod.azurecr.us -u <USERNAME> -p <PASSWORD>
         hauler store sync --products rke2-government=<VERSION> --product-registry rgcrprod.azurecr.us --key carbide-key.pub --platform linux/amd64
         hauler store save --filename rke2-government.tar.zst
         ```
