@@ -25,6 +25,7 @@ Rancher Carbide is tactically built with the following enhancements over the com
 | --- | --- |
 | [Carbide Secured Registry (CSR)](/docs/registry-docs/introduction) | Acquire, verify, and seed Carbide's hardened, signed images into your own registry. |
 | [RGS Application Collection](/docs/app-collection-docs/introduction) | A curated, production-ready set of trusted developer and infrastructure applications. |
+| [RKE2 Government](/docs/rke2-government-docs/overview) | Deploy a FIPS 140-3, STIG-compliant RKE2 distribution with SELinux built in and no manual hardening required. |
 | [IC Cloud Support](/docs/IC-cloud-support-docs/introduction) | Native Rancher provisioning on Intelligence Community cloud regions. |
 | [Rancher Compliance Operator](/docs/compliance-operator-docs/rke2-stig-scans) | Run RKE2 STIG scans against downstream clusters from the Rancher UI. |
 | [Offline Docs](/docs/offline-docs/introduction) | The entire supported Rancher product portfolio, available inside an airgap. |
