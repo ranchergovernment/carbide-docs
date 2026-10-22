@@ -174,6 +174,8 @@ To configure Rancher to use the airgapped UI extenstions:
 
  4. In the Rancher UI, go to Apps > Repositories. You should see `ui-plugin-catalog-repo` with the service URL `http://ui-plugin-catalog-svc.cattle-ui-plugin-system:8080`. Disable the `rancher` repo at `https://github.com/rancher/ui-plugin-charts` as these are the default connected charts, not the airgapped ones. 
 
+ After a helm upgrade, you may need to manually refresh the repo to see new extension versions. Select `ui-plugin-catalog-repo`, then click `Refresh` at the top of the page.
+
  5. Navigate to the Extensions tab. You should see any installed extensions, as well as the available options included with the airgapped catalog.
 
  >Note: If you had previously installed extensions using the connected repository, upgrade or reinstall extensions to update the endpoint to the correct service that will function in airgap.
