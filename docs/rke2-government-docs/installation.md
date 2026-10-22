@@ -4,25 +4,25 @@ import TabItem from '@theme/TabItem';
 # Installation
 
 :::info
-RKE2 STIG currently supports installation only through the [air-gapped method](https://docs.rke2.io/install/airgap). Use this method even when your nodes are in a connected environment.
+RKE2 Government currently supports installation only through the [air-gapped method](https://docs.rke2.io/install/airgap). Use this method even when your nodes are in a connected environment.
 :::
 
-These steps install an RKE2 STIG server or agent node. They assume you have already provisioned the node and are using the bundled containerd as the container runtime.
+These steps install an RKE2 Government server or agent node. They assume you have already provisioned the node and are using the bundled containerd as the container runtime.
 
 - **Server nodes** run the Kubernetes control plane, etcd, and workloads. Every cluster needs at least one server node.
 - **Agent nodes** run workloads only and join an existing server.
 
 Steps 1 and 2 are the same for both node types. Step 3 differs depending on whether you are installing a server or an agent. Install the first server node before installing any agent nodes.
 
-Replace `<VERSION>` in the commands below with the RKE2 STIG version you want to install. Available versions are listed on the [Carbide Portal](https://portal.ranchercarbide.dev).
+Replace `<VERSION>` in the commands below with the RKE2 Government version you want to install. Available versions are listed on the [Carbide Portal](https://portal.ranchercarbide.dev).
 
-## Step 1: Get the RKE2 STIG Artifacts
+## Step 1: Get the RKE2 Government Artifacts
 
-Download the RKE2 STIG artifacts on a connected machine using one of the following options.
+Download the RKE2 Government artifacts on a connected machine using one of the following options.
 
 ### Option A: Download from the Carbide Portal
 
-Log in to the [Carbide Portal](https://portal.ranchercarbide.dev), select RKE2 STIG, and download the pre-built Hauler tarball for your version. Then skip to [Step 2](#step-2-load-the-artifacts).
+Log in to the [Carbide Portal](https://portal.ranchercarbide.dev), select RKE2 Government, and download the pre-built Hauler tarball for your version. Then skip to [Step 2](#step-2-load-the-artifacts).
 
 ### Option B: Sync with Hauler
 
@@ -34,36 +34,36 @@ This option uses [Hauler](https://docs.hauler.dev/docs/intro). Follow the [Haule
     curl -sfOL https://raw.githubusercontent.com/ranchergovernment/carbide/main/carbide-key.pub
     ```
 
-2. Log in to the Carbide Secured Registry with your Carbide credentials, sync the RKE2 STIG product to your Hauler store, and save the store to a tarball.
+2. Log in to the Carbide Secured Registry with your Carbide credentials, sync the RKE2 Government product to your Hauler store, and save the store to a tarball.
 
 <Tabs groupId="registry">
    <TabItem value="harbor" label="Harbor Registry (Standard)" default>
         ```bash
         hauler login registry.ranchercarbide.dev -u <username> -p <password>
         hauler store sync --products rke2-stig=<VERSION> --product-registry registry.ranchercarbide.dev --key carbide-key.pub --platform linux/amd64
-        hauler store save --filename rke2-stig.tar.zst
+        hauler store save --filename rke2-government.tar.zst
         ```
     </TabItem>
     <TabItem value="ACR" label="Azure Container Registry (Legacy)">
         ```bash
         hauler login rgcrprod.azurecr.us -u <username> -p <password>
         hauler store sync --products rke2-stig=<VERSION> --product-registry rgcrprod.azurecr.us --key carbide-key.pub --platform linux/amd64
-        hauler store save --filename rke2-stig.tar.zst
+        hauler store save --filename rke2-government.tar.zst
         ```
     </TabItem>
 </Tabs>
 
-3. Copy `rke2-stig.tar.zst` and the Hauler binary to the RKE2 STIG node.
+3. Copy `rke2-government.tar.zst` and the Hauler binary to the RKE2 Government node.
 
 ## Step 2: Load the Artifacts
 
 1. On the node, load the tarball into a local Hauler store.
 
     ```bash
-    hauler store load --filename rke2-stig.tar.zst
+    hauler store load --filename rke2-government.tar.zst
     ```
 
-2. List the RKE2 STIG artifacts in the store. These include the binary tarball, checksum file, and install script, and are the artifacts whose references contain `/carbide/`. This command requires `jq`.
+2. List the RKE2 Government artifacts in the store. These include the binary tarball, checksum file, and install script, and are the artifacts whose references contain `/carbide/`. This command requires `jq`.
 
     ```bash
     hauler store info --output json | jq -r '[.artifacts[].reference | select(contains("/carbide/"))] | unique[]'
@@ -82,7 +82,7 @@ This option uses [Hauler](https://docs.hauler.dev/docs/intro). Follow the [Haule
 
 ### Disconnected Environments
 
-If you are running in an air-gapped environment, make the RKE2 STIG images available to the node using one of the following options.
+If you are running in an air-gapped environment, make the RKE2 Government images available to the node using one of the following options.
 
 #### Option A: Copy the Images to the Local Images Directory
 
@@ -90,7 +90,7 @@ Save the images from the Hauler store directly into the RKE2 images directory. R
 
 ```bash
 mkdir -p /var/lib/rancher/rke2/agent/images/
-hauler store save --containerd --filename /var/lib/rancher/rke2/agent/images/rke2-stig.tar.zst
+hauler store save --containerd --filename /var/lib/rancher/rke2/agent/images/rke2-government.tar.zst
 ```
 
 #### Option B: Copy the Images to an Existing Registry
@@ -102,7 +102,7 @@ hauler login <REGISTRY_URL> -u <username> -p <password>
 hauler store copy registry://<REGISTRY_URL>
 ```
 
-Then configure RKE2 STIG to pull its images from that registry by adding the following to `/etc/rancher/rke2/config.yaml` on each node:
+Then configure RKE2 Government to pull its images from that registry by adding the following to `/etc/rancher/rke2/config.yaml` on each node:
 
 ```yaml
 system-default-registry: <REGISTRY_URL>
@@ -110,7 +110,7 @@ system-default-registry: <REGISTRY_URL>
 
 If the registry requires authentication or uses a private certificate authority, also configure `/etc/rancher/rke2/registries.yaml`. See the upstream [private registry documentation](https://docs.rke2.io/install/private_registry) for details.
 
-## Step 3: Install RKE2 STIG
+## Step 3: Install RKE2 Government
 
 <Tabs groupId="node-type">
   <TabItem value="server" label="Server Node" default>

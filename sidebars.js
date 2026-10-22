@@ -112,21 +112,24 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'RKE2',
+      label: 'RKE2 Government',
       collapsed: false,
       items: [
-        'rke2/install',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'RKE2 STIG',
-      collapsed: false,
-      items: [
-        'rke2-stig-docs/overview',
-        'rke2-stig-docs/considerations-and-prereqs',
-        'rke2-stig-docs/installation',
-        'rke2-stig-docs/configuration',
+        'rke2-government-docs/overview',
+        'rke2-government-docs/considerations-and-prereqs',
+        'rke2-government-docs/installation',
+        'rke2-government-docs/configuration',
+        {
+          type: 'category',
+          label: 'Installing Standard RKE2',
+          items: [
+            {
+              type: 'doc',
+              id: 'rke2/install',
+              label: 'Installation',
+            },
+          ],
+        },
       ],
     },
     {

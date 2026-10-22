@@ -1,12 +1,12 @@
 # Configuration
 
-RKE2 STIG ships with STIG-compliant defaults built in, so a node runs in a hardened state with no configuration file at all. When your environment needs something different, you can still change it: RKE2 STIG is configured the same way as standard RKE2, and **any value you set in the RKE2 configuration file overrides the corresponding STIG default**.
+RKE2 Government ships with STIG-compliant defaults built in, so a node runs in a hardened state with no configuration file at all. When your environment needs something different, you can still change it: RKE2 Government is configured the same way as standard RKE2, and **any value you set in the RKE2 configuration file overrides the corresponding STIG default**.
 
 ## How Configuration Is Applied
 
-RKE2 STIG reads its configuration from `/etc/rancher/rke2/config.yaml`, and from any files in `/etc/rancher/rke2/config.yaml.d/`. Settings are applied in the following order:
+RKE2 Government reads its configuration from `/etc/rancher/rke2/config.yaml`, and from any files in `/etc/rancher/rke2/config.yaml.d/`. Settings are applied in the following order:
 
-1. **RKE2 STIG defaults.** The hardened, STIG-compliant values built into the product.
+1. **RKE2 Government defaults.** The hardened, STIG-compliant values built into the product.
 2. **Configuration file.** Any option set in `config.yaml` replaces the default for that option.
 3. **Command-line flags and environment variables.** As with standard RKE2, these take precedence over the configuration file.
 
