@@ -110,10 +110,6 @@ const config = {
                 to: '/docs/registry-docs/introduction',
               },
               {
-                label: 'STIGATRON Docs',
-                to: '/docs/stigatron-docs/introduction',
-              },
-              {
                 label: 'Offline Docs',
                 to: '/docs/offline-docs/introduction',
               },

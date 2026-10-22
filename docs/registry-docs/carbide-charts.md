@@ -1,10 +1,8 @@
 # Carbide Helm Charts
 
-Along with our secured images, we also provide helm charts through the CSR to install various components of the Carbide product suite. These charts include the necessary components to run [STIGATRON](/docs/stigatron-docs/introduction), an airgapped copy of all Rancher product docs, and a custom build of Rancher with our white-labeling.
+Along with our secured images, we also provide helm charts through the CSR to install various components of the Carbide product suite. These charts include an airgapped copy of all Rancher product docs and a custom build of Rancher with our white-labeling.
 
-:::danger Deprecated
-STIGATRON is deprecated in favor of the more tightly integrated [Rancher Compliance Operator](/docs/compliance-operator-docs/rke2-stig-scans). The operator replicates the STIG checks that STIGATRON performs. See linked documentation for details.
-:::
+
 
 **Available Helm Charts**
 ```bash
@@ -12,8 +10,6 @@ NAME                            CHART VERSION   APP VERSION     DESCRIPTION
 carbide-charts/airgapped-docs   0.1.49          0.1.4           Rancher Government Airgapped Docs
 carbide-charts/heimdall2        0.1.45          0.1.1           Rancher Government Heimdall2 Tool
 carbide-charts/rancher          2.8.3           v2.8.3          Install Rancher Server to manage Kubernetes...
-carbide-charts/stigatron        0.2.5           0.2.2           Rancher Government Stigatron Extension
-carbide-charts/stigatron-ui     0.2.3           0.2.0           Rancher Government Stigatron UI Extension
 ```
 
 The charts are available at https://rancherfederal.github.io/carbide-charts.
@@ -63,12 +59,6 @@ spec:
     - name: airgapped-docs
       repoURL: https://rancherfederal.github.io/carbide-charts
       version: 0.1.49
-    - name: stigatron
-      repoURL: https://rancherfederal.github.io/carbide-charts
-      version: 0.2.5
-    - name: stigatron-ui
-      repoURL: https://rancherfederal.github.io/carbide-charts
-      version: 0.2.3
 ---
 apiVersion: content.hauler.cattle.io/v1
 kind: Charts
