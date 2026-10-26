@@ -130,31 +130,6 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'STIGATRON',
-      collapsed: false,
-      items: [
-        'stigatron-docs/introduction',
-        {
-          type: 'category',
-          label: 'Installation',
-          items: [
-            'stigatron-docs/prereqs',
-            'stigatron-docs/installation',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Using STIGATRON',
-          items: [
-            'stigatron-docs/create-scan',
-            'stigatron-docs/using-heimdall',
-          ],
-        },
-        'stigatron-docs/uninstall',
-      ],
-    },
-    {
-      type: 'category',
       label: 'Offline Docs',
       collapsed: false,
       items: [
