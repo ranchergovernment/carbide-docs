@@ -1,5 +1,9 @@
 # Install RKE2 from the Carbide Registry
 
+:::tip Recommended: RKE2 Government
+RGS recommends [RKE2 Government](../rke2-government-docs/overview.md) for new deployments. It ships STIG-compliant and FIPS 140-3 validated out of the box, with SELinux enablement and Rancher compatibility built in, so no separate hardening configuration is required.
+:::
+
 ## Save the Artifacts
 
 The airgap tool [Hauler](https://docs.hauler.dev/docs/intro) allows you to aggregate and transport the RKE2 artifacts to disconnected environments, where you can seed a private registry or serve a registry of the Hauler store. Follow the [Hauler installation instructions](https://docs.hauler.dev/docs/introduction/install), then proceed with the following steps. This pattern is repeatable for other artifacts you may want to bring into your airgapped environment.
