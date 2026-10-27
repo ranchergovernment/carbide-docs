@@ -3,7 +3,7 @@
 This section walks through installing and using Carbide Offline Docs, the airgap-friendly documentation component of Rancher Government Carbide.
 
 :::tip
-Airgapped Docs have been refreshed and renamed to Offline Docs. For migration instructions, see the [installation page](./installation#migrating-from-airgapped-docs). 
+Airgapped Docs have been refreshed and renamed to Offline Docs. For migration instructions, see the [installation page](./installation.md#migrating-from-airgapped-docs). 
 :::
 
 ## What's included?
